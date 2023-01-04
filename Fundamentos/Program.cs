@@ -25,7 +25,8 @@ namespace Fundamentos
             //EjemploColecciones();
             //SumarNumerosColeccion();
             //AdministrarTemperaturas();
-            AdministrarTemperaturasHelper();
+            //AdministrarTemperaturasHelper();
+            ConducirCoche();
 
         }
 
@@ -571,9 +572,82 @@ namespace Fundamentos
             Console.WriteLine("Minima anual " + helper.GetMinimaAnual());
         }
 
+        static void ConducirCoche()
+        {
 
+            //CREAMOS NUEVO 
+            Coche car =  new Coche();
+            //PROPIEDADES
+            car.Marca = "Ferrari";
+            car.Modelo = "Testarrosa";
+            int opcion = -1;
+
+            while (opcion != 7)
+            {
+                Console.WriteLine("**********MENU**********");
+                Console.WriteLine("1. Arrancar ");
+                Console.WriteLine("2. Acelerar ");
+                Console.WriteLine("3. Frenar ");
+                Console.WriteLine("4. Girar ");
+                Console.WriteLine("5. Acelerar personalizado ");
+                Console.WriteLine("6. Girar personalizado ");
+                Console.WriteLine("7. Salir ");
+                Console.WriteLine("Seleccione una accion ");
+                string dato = Console.ReadLine();
+                opcion = int.Parse(dato);
+
+                if(opcion == 1)
+                {
+                    car.Arrancar();
+                }
+                else if (opcion == 2)
+                {
+                    car.Acelerar();
+                }
+                else if (opcion == 3)
+                {
+                    car.Frenar();
+                }
+                else if (opcion == 4)
+                {
+                    car.Girar();
+                }
+                else if (opcion == 5)
+                {
+                    Console.WriteLine("Aceleracion: ");
+                    int aceleracion = int.Parse(Console.ReadLine());
+                    car.Acelerar(aceleracion);
+
+                }
+                else if (opcion == 6)
+                {
+                    Console.WriteLine("Introduce una dirección");
+                    Console.WriteLine("0.- Norte");
+                    Console.WriteLine("1.- Sur");
+                    Console.WriteLine("2.- Este");
+                    Console.WriteLine("3.- Oeste");
+                    int idDireccion = int.Parse(Console.ReadLine());
+                    //idDireccion ES UN TIPO Brujula
+                    Brujula aux = (Brujula)idDireccion; // AQUI SE GUARDA LA OPCION ELEGIDA
+                    car.Girar(aux);
+
+                }
+                else if (opcion == 7)
+                {
+                    Console.WriteLine("Gracias, vuelva pronto");
+                }
+                else
+                {
+                    Console.WriteLine("Opcion incorrecta");
+                }
+
+                Console.WriteLine(car.ToString());
+            }
+
+            Console.WriteLine("Fin de programa");
+
+        }
 
     }
-
-         
+      
 }
